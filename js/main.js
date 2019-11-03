@@ -227,7 +227,7 @@ let eval = () => {
         document.getElementById(tmp).classList.add('d-none');
     }
 
-    // document.getElementById("result").innerHTML = e;
+    console.log(e);
   }
 
 }

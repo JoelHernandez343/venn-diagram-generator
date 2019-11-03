@@ -18,6 +18,9 @@
 - [+] Implementación primitiva de generación de diagramas vía toggles
 - [+] Ya se lo podemos mostrar a la maestra
 
+#### Versión 0.3.1
+- [!] Bug fixies
+
 ### TO-DO
 - Elementos de conjuntos :warning: 
 - Implementar interfaz de trabajo en NodeJS
