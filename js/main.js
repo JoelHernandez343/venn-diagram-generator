@@ -201,8 +201,17 @@ let evaluate = (postfix, n) => {
   return r;
 }
 
-let x = "(AUBUC)'";
-let p = toPost(x);
-console.log(p);
-let e = evaluate(toPost(x), 3);
-console.log(e.toString(2));
+let eval = () => {
+  let x = document.getElementById("expression").value;
+  let n = parseInt(document.getElementById("nsets").value);
+  if (x){
+    let p = toPost(x);
+    let e = evaluate(p, n);
+    document.getElementById("result").innerHTML = e.toString();
+  }
+}
+
+// let x = "(AUBUC)'";
+// let p = toPost(x);
+// let e = evaluate(p, 3);
+// console.log(e);

@@ -8,32 +8,47 @@ html
             )
         
         link(rel="stylesheet" href="./css/bootstrap.css")
+        link(rel="stylesheet" href="./css/my.css")
         
         title Esto es un título
     body
         header
-            p Header
-        section.container
+            .jumbotron
+                h1 Venn Diagram Generator
+                p Esto es el inicio
+            nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
+                a.navbar-brand(href="#") Navegación
+                button.navbar-toggler(type="button" data-toggle="collapse" data-target="#collapsibleNavbar")
+                    span.navbar-toggler-icon
+                #collapsibleNavbar.collapse.navbar-collapse
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link(href="#") Sobre nosotros
+        section#main.container
             .row
                 .col-md-4.col-lg-12
-                    // p Ingresa la operación:
                     form
                         .form-group
-                            label label
-                            input.form-control(placeholder="Ej: AUB")
+                            label Ingresa la operación
+                            input#expression.form-control(placeholder="Ej: AUB")
                         .form-group
-                            label label
-                            select.form-control
-                                option Opción 1
-                                option Opción 2
-
-                .col-md-8.col-lg-12
+                            label Número de conjuntos
+                            select#nsets.form-control
+                                option 1
+                                option 2
+                                option 3
+                                option 4
+                                option 5
+                        .form-group
+                            button.btn.btn-primary(type="button" onclick="eval()") Evaluar
+                #diagram.col-md-8.col-lg-12
                     .card
                         .card-body
                             h5.card-title Canvas
-                            p.card-text A ver
-        footer
-            p footer
+                            p#result.card-text Aquí iría el diagrama si tan sólo tuviera uno
+                            canvas
+        footer.jumbotron.text-center
+            footer Piecito
                 
     
     script(
@@ -49,3 +64,4 @@ html
     )
 
     script(src="./js/bootstrap.js")
+    script(src="./js/main.js")
