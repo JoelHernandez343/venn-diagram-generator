@@ -7,6 +7,10 @@
     padding-bottom: 10px;
 }
 
+#diagram {
+    padding-top: 10px;
+}
+
 .contorno {
     stroke: green;
     stroke-width: 4;
@@ -95,4 +99,24 @@
     r: 70;
     cx: 71;
     cy: 112;
+}
+
+.diagram {
+    position: relative;
+}
+
+#sets2 {
+    width: 241px;
+}
+
+#sets3 {
+    width: 241px;
+}
+
+#sets4 {
+    width: 222px;
+}
+
+#sets5 {
+    width: 255px;
 }

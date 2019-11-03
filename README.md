@@ -21,6 +21,10 @@
 #### Versión 0.3.1
 - [!] Bug fixies
 
+#### Versión 0.3.2
+- [+] Los diagramas se muestran centrados
+- [+] Tabla se símbolos
+
 ### TO-DO
 - Elementos de conjuntos :warning: 
 - Implementar interfaz de trabajo en NodeJS

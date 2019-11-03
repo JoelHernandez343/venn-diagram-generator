@@ -25,32 +25,65 @@
     <section class="container" id="main">
       <div class="row">
         <div class="col-md-4 col-lg-12">
-          <form>
-            <div class="form-group">
-              <label>Ingresa la operación</label>
-              <input class="form-control" id="expression" placeholder="Ej: AUB">
+          <div class="row">
+            <div class="col-md-12 col-lg-6">
+              <form>
+                <div class="form-group">
+                  <label>Ingresa la operación</label>
+                  <input class="form-control" id="expression" placeholder="Ej: AUB">
+                </div>
+                <div class="form-group">
+                  <label>Número de conjuntos</label>
+                  <select class="form-control" id="nsets">
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" type="button" onclick="eval()">Evaluar</button>
+                </div>
+              </form>
             </div>
-            <div class="form-group">
-              <label>Número de conjuntos</label>
-              <select class="form-control" id="nsets">
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+            <div class="col-md-12 col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5>Símbolos permitidos</h5>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Símbolo</th>
+                      <th scope="col">Significado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>∅ - 0 - Ø</td>
+                      <td>Conjunto vacío</td>
+                    </tr>
+                    <tr>
+                      <td>Ω - O</td>
+                      <td>Universo</td>
+                    </tr>
+                    <tr>
+                      <td>S - s</td>
+                      <td>Ω - AUBU...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="form-group">
-              <button class="btn btn-primary" type="button" onclick="eval()">Evaluar</button>
-            </div>
-          </form>
+          </div>
         </div>
         <div class="col-md-8 col-lg-12" id="diagram">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Diagrama</h5>
-              <div>
-                <div class="d-none" id="sets2">
-                  <svg width="241" height="141">
+              <div class="diagram">
+                <div class="d-none mx-auto" id="sets2">
+                  <svg class="mx-auto" width="241" height="141">
                     <defs>
                       <mask id="s2_1">
                         <rect class="borrar"/>
@@ -80,7 +113,7 @@
                     <rect class="contornoR" width="241" height="141"/>
                   </svg>
                 </div>
-                <div class="d-none" id="sets3">
+                <div class="d-none mx-auto" id="sets3">
                   <svg width="241" height="231">
                     <defs>
                       <mask id="s3_1">
@@ -146,7 +179,7 @@
                     <rect class="contornoR" width="241" height="231"/>
                   </svg>
                 </div>
-                <div class="d-none" id="sets4">
+                <div class="d-none mx-auto" id="sets4">
                   <svg width="222" height="222">
                     <defs>
                       <mask id="s4_1">
@@ -282,7 +315,7 @@
                     <rect class="contornoR" width="222" height="222"/>
                   </svg>
                 </div>
-                <div class="d-none" id="sets5">
+                <div class="d-none mx-auto" id="sets5">
                   <svg width="255" height="250">
                     <defs>
                       <mask id="s5_1">

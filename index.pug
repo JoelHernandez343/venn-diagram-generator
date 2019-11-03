@@ -27,26 +27,49 @@ html
         section#main.container
             .row
                 .col-md-4.col-lg-12
-                    form
-                        .form-group
-                            label Ingresa la operación
-                            input#expression.form-control(placeholder="Ej: AUB")
-                        .form-group
-                            label Número de conjuntos
-                            select#nsets.form-control
-                                option 2
-                                option 3
-                                option 4
-                                option 5
-                        .form-group
-                            button.btn.btn-primary(type="button" onclick="eval()") Evaluar
+                    .row
+                        .col-md-12.col-lg-6
+                            form
+                                .form-group
+                                    label Ingresa la operación
+                                    input#expression.form-control(placeholder="Ej: AUB")
+                                .form-group
+                                    label Número de conjuntos
+                                    select#nsets.form-control
+                                        option 2
+                                        option 3
+                                        option 4
+                                        option 5
+                                .form-group
+                                    button.btn.btn-primary(type="button" onclick="eval()") Evaluar
+                        .col-md-12.col-lg-6
+                            .card
+                                .card-body
+                                    h5 Símbolos permitidos
+                                table.table
+                                    thead
+                                        tr
+                                            th(scope="col") Símbolo
+                                            th(scope="col") Significado
+                                    tbody
+                                        tr
+                                            td ∅ - 0 - Ø
+                                            td Conjunto vacío
+                                        tr
+                                            td Ω - O
+                                            td Universo
+                                        tr
+                                            td S - s
+                                            td Ω - AUBU...
+
+                
                 #diagram.col-md-8.col-lg-12
                     .card
                         .card-body
                             h5.card-title Diagrama
-                            div
-                                #sets2.d-none
-                                    svg(width="241" height="141")
+                            .diagram
+                                #sets2.d-none.mx-auto
+                                    svg(width="241" height="141").mx-auto
                                         defs
                                             mask#s2_1
                                                 rect.borrar/
@@ -72,7 +95,7 @@ html
                                         circle.A3.circulo.contorno/
                                         circle.B3.circulo.contorno/
                                         rect.contornoR(width="241" height="141")/
-                                #sets3.d-none
+                                #sets3.d-none.mx-auto
                                     svg(width="241" height="231")
                                         defs
                                             mask#s3_1
@@ -132,7 +155,7 @@ html
                                         circle.B3.circulo.contorno/
                                         circle.C3.circulo.contorno/
                                         rect.contornoR(width="241" height="231")/
-                                #sets4.d-none
+                                #sets4.d-none.mx-auto
                                     svg(width="222" height="222")
                                         defs
                                             mask#s4_1
@@ -260,7 +283,7 @@ html
                                         circle.C4.circulo.contorno/
                                         circle.D4.circulo.contorno/
                                         rect.contornoR(width="222" height="222")/
-                                #sets5.d-none
+                                #sets5.d-none.mx-auto
                                     svg(width="255" height="250")
                                         defs
                                             mask#s5_1
