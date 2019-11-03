@@ -16,7 +16,7 @@
 - Instalar Prepros ([prepros.io](https://prepros.io/))
 - Clonar este repositorio:
 ```ssh
-    git clone https://github.com/JoelHernandez343/ing-de-sfw-project.git
+git clone https://github.com/JoelHernandez343/ing-de-sfw-project.git
 ```
 - Abrir carpeta de proyecto con Prepros
 - Iniciar LivePreview ([help here.](https://prepros.io/help/live-preview))  
