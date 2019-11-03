@@ -1,5 +1,8 @@
 # Proyecto de Ingeniería de Software
-## Escuela Superior de Cómputo
+## Venn Diagram Generator
+### Escuela Superior de Cómputo
+
+Esta aplicación web genera diagramas de Venn dada una expresión por el usuario (en desarrollo).
 
 ### Versión 0.1.0:
 - [+] Agregadas funciones de JS
@@ -27,14 +30,15 @@
 
 ### TO-DO
 - Elementos de conjuntos :warning: 
-- Implementar interfaz de trabajo en NodeJS
+- Implementar interfaz de trabajo en NodeJS :question:
 - Nombres de los conjuntos
 - Diagramas interactivos :question:
+  - Click over: Mostrar información sobre el conjunto en cuestión.
 - Representaciones alternativas
 - Inclusión de Katex :question:
 - Migrar la arquitectura de la app a React JS :question: :fire:
 
-### Para ejecutar:
+### Para ejecutar
 
 - Instalar Prepros ([prepros.io](https://prepros.io/))
 - Clonar este repositorio:
@@ -42,4 +46,17 @@
 git clone https://github.com/JoelHernandez343/ing-de-sfw-project.git
 ```
 - Abrir carpeta de proyecto con Prepros
-- Iniciar LivePreview ([help here.](https://prepros.io/help/live-preview))  
+- Iniciar LivePreview ([help here.](https://prepros.io/help/live-preview))
+- Si quieres iniciar LivePreview en el Celular:
+  - Dar click en el ícono del celular
+  - Copiar dirección IP local en el navegador de tu celular o
+  - Escanear código QR
+
+### Para ejecutar sin Prepros:
+
+- Clonar este repositorio:
+```ssh
+git clone https://github.com/JoelHernandez343/ing-de-sfw-project.git
+```
+- Abrir Index.html
+  
