@@ -3,6 +3,7 @@
 
 ### Versión 0.1.0:
 - [+] Agregadas funciones de JS
+- [+] Ehad se rifó el analizador sintáctico :blue_heart:
 - [+] Esqueleto construido en pug renderizable a html
 
 ### Versión 0.2.0:
@@ -17,7 +18,8 @@
 - [+] Implementación primitiva de generación de diagramas vía toggles
 - [+] Ya se lo podemos mostrar a la maestra
 
-### TODO
+### TO-DO
+- Elementos de conjuntos :warning: 
 - Implementar interfaz de trabajo en NodeJS
 - Nombres de los conjuntos
 - Diagramas interactivos :question:
