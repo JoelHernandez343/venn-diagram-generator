@@ -67,9 +67,12 @@ html
                     .card
                         .card-body
                             h5.card-title Diagrama
+                            #logoDiagram
+                                p.mx-auto
+                                    img(src="images/logo.jpg" alt="Logo chido")
                             .diagram
                                 #sets2.d-none.mx-auto
-                                    svg(width="241" height="141").mx-auto
+                                    svg(width="241" height="141")
                                         defs
                                             mask#s2_1
                                                 rect.borrar/
@@ -499,3 +502,5 @@ html
 
     script(src="./js/bootstrap.js")
     script(src="./js/main.js")
+
+    link(href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet")

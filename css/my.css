@@ -1,3 +1,7 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
 .jumbotron {
     margin-bottom: 0;
 }
@@ -119,4 +123,16 @@
 
 #sets5 {
     width: 255px;
+}
+
+#logoDiagram {
+    position: relative;
+}
+
+#logoDiagram > p {
+    width: 45%;
+}
+
+#logoDiagram img {
+    width: 100%;
 }

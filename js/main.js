@@ -209,22 +209,28 @@ let eval = () => {
   let p = '';
   let e = [];
   if (x){
+    document.getElementById('logoDiagram').classList.add('d-none');
+
     p = toPost(x);
     e = evaluate(p, n);
     for (var i = 2; i < 6; ++i){
       var tmp = `sets${i}`;
+
       if (i === n)
         document.getElementById(tmp).classList.remove('d-none');
       else
         document.getElementById(tmp).classList.add('d-none');
+
     }
   
     for (var i = 0; i < e.length; ++i){
       var tmp = `f${n}_${i + 1}`;
+
       if (e[i])
         document.getElementById(tmp).classList.remove('d-none');
       else
         document.getElementById(tmp).classList.add('d-none');
+
     }
 
     console.log(e);
