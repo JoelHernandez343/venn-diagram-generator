@@ -22,11 +22,14 @@ Esta aplicación web genera diagramas de Venn dada una expresión por el usuario
 - [+] Ya se lo podemos mostrar a la maestra
 
 #### Versión 0.3.1
-- [!] Bug fixies
+- [!] Bug fixes
 
 #### Versión 0.3.2
 - [+] Los diagramas se muestran centrados
 - [+] Tabla se símbolos
+
+#### Versión 0.3.3
+- [+] Logotipo en diagrama
 
 ### TO-DO
 - Elementos de conjuntos :warning: 
