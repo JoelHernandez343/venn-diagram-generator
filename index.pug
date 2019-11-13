@@ -41,6 +41,23 @@ html
                                         option 4
                                         option 5
                                 .form-group
+                                    p
+                                        a.btn.btn-primary(data-toggle="collapse" href="#elementsInput" role="button" aria-expanded="false" aria-controls="elementsInput") Usar elementos
+                                    #elementsInput.collapse 
+                                        .card.card-body
+                                            .row
+                                                .col-md-12
+                                                    label Conjunto A
+                                                    input#setA.form-control(placeholder="perro, gato, 1, 2, 3")
+                                                    label Conjunto B
+                                                    input#setB.form-control(placeholder="perro, gato, 1, 2, 3")
+                                                    label Conjunto C
+                                                    input#setC.form-control(placeholder="perro, gato, 1, 2, 3")
+                                                    label Conjunto D
+                                                    input#setD.form-control(placeholder="perro, gato, 1, 2, 3")
+                                                    label Conjunto E
+                                                    input#setE.form-control(placeholder="perro, gato, 1, 2, 3")
+                                .form-group
                                     button.btn.btn-primary(type="button" onclick="eval()") Evaluar
                         .col-md-12.col-lg-6
                             .card
@@ -500,6 +517,7 @@ html
         crossorigin="anonymous"
     )
 
+    script(src="./js/jquery-3.4.1.min.js")
     script(src="./js/bootstrap.js")
     script(src="./js/main.js")
 
