@@ -15,6 +15,18 @@ header.header .naving {
   padding-top: 3.2em;
 }
 
+header.header .top-selected a {
+  background: linear-gradient(45deg,#ff8a00,#e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header.header .top-selected {
+  background: linear-gradient(45deg,#ff8a00,#e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @media only screen and (max-width: 992px){
   header.header .row {
     width: 80%;
@@ -107,7 +119,11 @@ main .elements p{
   box-shadow: 0 2px 3px 1px rgba(44, 44, 44, 0.3);
 }
 
-i.eval {
+button.eval {
+  background: linear-gradient(45deg,#ff8a00,#e52e71);
+}
+
+button.eval i {
   color: white;
 }
 

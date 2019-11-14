@@ -15,7 +15,7 @@ html
   
     title Venn Diagram Generator
   body
-    +top()
+    +top(1)
     main
       .row
         form.col.s12.l4
@@ -40,8 +40,8 @@ html
               #elements.down
                 .row
             .input-field.col.s12
-              button.waves-effect.waves-light.btn.orange.darken-1(onclick="eval()", type="button")
-                i.material-icons.left.eval forward
+              button.waves-effect.waves-light.btn.eval(onclick="eval()", type="button")
+                i.material-icons.left forward
                 | Evaluar
           .divider
           .row
