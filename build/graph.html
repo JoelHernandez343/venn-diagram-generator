@@ -63,9 +63,7 @@
                   <input id="useEl" type="checkbox" onclick="toggleElements()"><span>Elementos</span>
                 </label>
               </p>
-              <div class="down" id="elements">
-                <div class="row"></div>
-              </div>
+              <div class="down" id="elements"></div>
             </div>
             <div class="input-field col s12">
               <button class="waves-effect waves-light btn eval" onclick="eval()" type="button"><i class="material-icons left">forward</i>Evaluar</button>
@@ -565,6 +563,9 @@
                   <rect class="contornoR" width="255" height="250"/>
                 </svg>
               </div>
+              <div class="row">
+                <div class="col s12 center-align" id="elements-result"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -574,5 +575,6 @@
   <script type="text/javascript" src="./../js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="./../js/materialize.min.js"></script>
   <script type="text/javascript" src="./../js/graphing.js"></script>
+  <script type="text/javascript" src="./../js/elements.js"></script>
   <script type="text/javascript" src="./../js/vdg.js"></script>
 </html>

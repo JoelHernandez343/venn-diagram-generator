@@ -41,7 +41,6 @@ html
                   input#useEl(type="checkbox" onclick="toggleElements()")
                   span Elementos
               #elements.down
-                .row
             .input-field.col.s12
               button.waves-effect.waves-light.btn.eval(onclick="eval()", type="button")
                 i.material-icons.left forward
@@ -69,10 +68,8 @@ html
                 +graph4()
               #sets5.hide.center
                 +graph5()
-              #elements-result
-                .row
-                  .col.s12
-                    p
+              .row
+                #elements-result.col.s12.center-align
 
 
   script(type="text/javascript" src="./../js/jquery-3.4.1.min.js")

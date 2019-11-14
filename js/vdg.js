@@ -14,17 +14,35 @@ let userSets = () => {
 
 let buildElements = () => {
   var n = userSets();
-  var data = '';
+
+  var row = document.createElement('div');
+  row.className = 'row';
 
   for (var i = 0; i < n; ++i){
     var letter = String.fromCharCode(65 + i);
-    data += '<div class="input-field col s12">';
-    data += `<input id="#sett${letter}" type="text">`;
-    data += `<label for="#sett${letter}">Conjunto ${letter}</label>`;
-    data += '</div>';
+
+    div = document.createElement('div');
+    div.className = 'input-field col s12';
+    
+    var input = document.createElement('input');
+    input.setAttribute('id', `sett${letter}`);
+    input.setAttribute('type', 'text');
+
+    var label = document.createElement('label');
+    label.setAttribute('for', `sett${letter}`);
+    label.innerHTML = `Conjunto ${letter}`;
+
+    div.appendChild(input);
+    div.appendChild(label);
+    row.appendChild(div);
   }
 
-  $('#elements > .row').html(data);
+  var e = document.getElementById('elements');
+  while (e.firstChild)
+    e.removeChild(e.firstChild);
+  
+  e.appendChild(row);
+  
 }
 
 let toggleElements = () => {
@@ -65,8 +83,23 @@ let eval = () => {
     }
 
     var val = document.getElementById("useEl").checked;
-    if (val) {
+    if (val && n <= 3) {
       let s = creatingElements(n);
+      var data = '';
+      if (n === 2){
+        data += `<p>A - B: ${s[0]}</p>`;
+        data += `<p>B - A: ${s[1]}</p>`;
+        data += `<p>A^B: ${s[2]}</p>`;
+      } else {
+        data += `<p>A - B - C: ${s[0]}</p>`;
+        data += `<p>B - A - C: ${s[1]}</p>`;
+        data += `<p>C - A - B: ${s[2]}</p>`;
+        data += `<p>A^B: ${s[3]}</p>`;
+        data += `<p>B^C: ${s[4]}</p>`;
+        data += `<p>A^C: ${s[5]}</p>`;
+        data += `<p>A^B^C: ${s[6]}</p>`;
+      }
+      $('#elements-result').html(data);
     }
   }
 }

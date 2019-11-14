@@ -147,46 +147,29 @@ let intersectionSet = (array1, array2) => {
   return [...s];
 }
 
-let sets = [
-  [11,2,3, 5, 66, 13],
-  [1,2,3,4,5, 66],
-  [23, 5, 1, 13]
-];
-
 let creatingElements = n =>{
+  if (n > 3){
+    console.log('Aun no');
+    return;
+  }
+
   let sets = [];
 
-  for (var i = 0; i < n){
+  for (var i = 0; i < n; ++i){
     var letter = String.fromCharCode(65 + i);
-    var stmp = document.getElementById(`sett${letter}`).value;
+    var stmp = $(`#sett${letter}`).val();
     
-    console.log(stmp.split(','));
+    var words = stmp.split(/\s*,+\s*/);
+    words = words.filter(e => e !== '');
+    
+    sets.push(words);
   }
 
-  return;
-
-  let fix = intersectionSet(sets[0], sets[1]);
-  fix = intersectionSet(fix, sets[2]);
-
-  let n = 3;
-
-  let r = buildPieces(sets, n);
-
-  if (n === 3){
-    r[5] = fix;
-  }
-
-  var data = '';
-
-  for(var i=0; i < r.length;i++){
-    data = `Seccion ${i + 1}: `;
-      
-    for(var k = 0 ; k < r[i].length; k++)
-      data += `${r[i][k]} `;
-      
-    data += "\n";
-  }
-
-  return data;
+  r = buildPieces(sets, n);
+  
+  for (var i = 0; i < r.length; ++i)
+    r[i] = r[i].filter(e => e);
+  
+  return  r;
 }
 
