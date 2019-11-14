@@ -113,7 +113,7 @@ main .elements p{
   box-shadow: none;
 }
 
-#elements.up {
+#elements.upp {
   max-height: 500px;
   transition: max-height 0.25s ease-in, box-shadow 0.15s ease-in;
   box-shadow: 0 2px 3px 1px rgba(44, 44, 44, 0.3);

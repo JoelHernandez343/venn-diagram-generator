@@ -153,22 +153,40 @@ let sets = [
   [23, 5, 1, 13]
 ];
 
-let fix = intersectionSet(sets[0], sets[1]);
-fix = intersectionSet(fix, sets[2]);
+let creatingElements = n =>{
+  let sets = [];
 
-let n = 3;
+  for (var i = 0; i < n){
+    var letter = String.fromCharCode(65 + i);
+    var stmp = document.getElementById(`sett${letter}`).value;
+    
+    console.log(stmp.split(','));
+  }
 
-let r = buildPieces(sets, n);
+  return;
 
-if (n === 3){
-  r[5] = fix;
+  let fix = intersectionSet(sets[0], sets[1]);
+  fix = intersectionSet(fix, sets[2]);
+
+  let n = 3;
+
+  let r = buildPieces(sets, n);
+
+  if (n === 3){
+    r[5] = fix;
+  }
+
+  var data = '';
+
+  for(var i=0; i < r.length;i++){
+    data = `Seccion ${i + 1}: `;
+      
+    for(var k = 0 ; k < r[i].length; k++)
+      data += `${r[i][k]} `;
+      
+    data += "\n";
+  }
+
+  return data;
 }
 
-for(var i=0; i < r.length;i++){
-  var data = `Seccion ${i + 1}: `;
-    
-  for(var k = 0 ; k < r[i].length; k++)
-    data += `${r[i][k]} `;
-    
-  console.log(data);
-}

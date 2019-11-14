@@ -19,8 +19,8 @@ let buildElements = () => {
   for (var i = 0; i < n; ++i){
     var letter = String.fromCharCode(65 + i);
     data += '<div class="input-field col s12">';
-    data += `<input id="#set${letter}" type="text">`;
-    data += `<label for="#set${letter}">Conjunto ${letter}</label>`;
+    data += `<input id="#sett${letter}" type="text">`;
+    data += `<label for="#sett${letter}">Conjunto ${letter}</label>`;
     data += '</div>';
   }
 
@@ -31,12 +31,11 @@ let toggleElements = () => {
   var val = document.getElementById("useEl").checked;
   var elements = document.getElementById("elements");
   if (val){
-    elements.classList.add('up');
-    
+    elements.classList.add('upp');
     buildElements();
   }
   else
-    elements.classList.remove('up');
+    elements.classList.remove('upp');
 }
 
 let eval = () => {
@@ -63,7 +62,11 @@ let eval = () => {
         document.getElementById(tmp).classList.remove('hide');
       else
         document.getElementById(tmp).classList.add('hide');
+    }
 
+    var val = document.getElementById("useEl").checked;
+    if (val) {
+      let s = creatingElements(n);
     }
   }
 }
