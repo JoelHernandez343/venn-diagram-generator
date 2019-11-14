@@ -1,0 +1,82 @@
+include mixins/_graph2.pug
+include mixins/_symbols.pug
+doctype html
+html
+  head
+    link(href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link(type="text/css" rel="stylesheet" href="./../css/materialize.min.css"  media="screen,projection")
+    link(type="text/css" rel="stylesheet" href="./../css/main.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  
+    title Venn Diagram Generator
+  body
+    header.header
+      .row
+        .col.s12.l5
+          h1 Venn Diagram Generator
+          h2 Operaciones complejas, diagramas sencillos
+        .col.l7.hide-on-med-and-down.naving
+          .row
+            .col.s4
+              a.waves-effect.btn-flat Inicio
+            .col.s4
+              a.waves-effect.btn-flat Sobre nosotros
+            .col.s4
+              a.waves-effect.btn-flat Graficador
+      .container
+        a.top.sidenav-trigger.full.hide-on-large-only(href="#" data-target="mobile-demo")
+          i.material-icons menu
+      ul#mobile-demo.sidenav
+        h1 Navegación
+        li
+          a.waves-effect(href="#") Inicio
+        li
+          a.waves-effect(href="#") Sobre nosotros
+        li 
+          a.waves-effect(href="#") Graficador
+    main
+      .row
+        form.col.s12.l4
+          h1 Graficador
+          .row
+            .input-field.col.s12
+              input#expression(type="text")
+              label(for="expression") Ingresa la operación
+            .input-field.col.s12
+              select#n-sets(onchange="buildElements()")
+                option(value="auto" selected) Selecciona una valor
+                option(value="2") 2 Conjuntos
+                option(value="3") 3 Conjuntos
+                option(value="4") 4 Conjuntos
+                option(value="5") 5 Conjuntos
+              label Número de conjuntos
+            .input-field.col.s12.elements
+              p
+                label
+                  input#useEl(type="checkbox" onclick="toggleElements()")
+                  span Elementos
+              #elements.down
+                .row
+            .input-field.col.s12
+              button.waves-effect.waves-light.btn.orange.darken-1(onclick="eval()", type="button")
+                i.material-icons.left.eval forward
+                | Evaluar
+          .divider
+          .row
+            .col.s12
+              p Puedes consultar la tabla de símbolos disponibles aquí:
+              button.waves-effect.waves-light.btn-flat.modal-trigger(onclick="", type="button", data-target="symbols")
+                i.material-icons.left note
+                | Símbolos disponibles
+              #symbols.modal
+                +symbols()
+        #diagram.col.s12.l8          
+          .row
+
+          
+
+
+  script(type="text/javascript" src="./../js/jquery-3.4.1.min.js")
+  script(type="text/javascript" src="./../js/materialize.min.js")
+  script(type="text/javascript" src="./../js/vdg.js")
