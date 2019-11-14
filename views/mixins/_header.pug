@@ -1,0 +1,25 @@
+mixin top()
+  header.header
+    .row
+      .col.s12.l5
+        h1 Venn Diagram Generator
+        h2 Operaciones complejas, diagramas sencillos
+      .col.l7.hide-on-med-and-down.naving
+        .row
+          .col.s4
+            a.waves-effect.btn-flat Inicio
+          .col.s4
+            a.waves-effect.btn-flat Sobre nosotros
+          .col.s4
+            a.waves-effect.btn-flat Graficador
+    .container
+      a.top.sidenav-trigger.full.hide-on-large-only(href="#" data-target="mobile-demo")
+        i.material-icons menu
+    ul#mobile-demo.sidenav
+      h1 Navegación
+      li
+        a.waves-effect(href="#") Inicio
+      li
+        a.waves-effect(href="#") Sobre nosotros
+      li 
+        a.waves-effect(href="#") Graficador

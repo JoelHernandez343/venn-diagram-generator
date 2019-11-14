@@ -1,5 +1,6 @@
 include mixins/_graph2.pug
 include mixins/_symbols.pug
+include mixins/_header.pug
 doctype html
 html
   head
@@ -11,30 +12,7 @@ html
   
     title Venn Diagram Generator
   body
-    header.header
-      .row
-        .col.s12.l5
-          h1 Venn Diagram Generator
-          h2 Operaciones complejas, diagramas sencillos
-        .col.l7.hide-on-med-and-down.naving
-          .row
-            .col.s4
-              a.waves-effect.btn-flat Inicio
-            .col.s4
-              a.waves-effect.btn-flat Sobre nosotros
-            .col.s4
-              a.waves-effect.btn-flat Graficador
-      .container
-        a.top.sidenav-trigger.full.hide-on-large-only(href="#" data-target="mobile-demo")
-          i.material-icons menu
-      ul#mobile-demo.sidenav
-        h1 Navegación
-        li
-          a.waves-effect(href="#") Inicio
-        li
-          a.waves-effect(href="#") Sobre nosotros
-        li 
-          a.waves-effect(href="#") Graficador
+    +top()
     main
       .row
         form.col.s12.l4
@@ -73,10 +51,12 @@ html
                 +symbols()
         #diagram.col.s12.l8          
           .row
-
-          
-
+            #logo.col.s12
+              p
+                img(src="./../images/logo.jpg" alt="Logo chido")
 
   script(type="text/javascript" src="./../js/jquery-3.4.1.min.js")
   script(type="text/javascript" src="./../js/materialize.min.js")
+  //- script(type="text/javascript" src="./../js/graphing.js")
   script(type="text/javascript" src="./../js/vdg.js")
+  

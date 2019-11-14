@@ -118,3 +118,16 @@ i.eval {
 .modal, .modal-footer {
   background-color: #E5E7E9 !important;
 }
+
+#logo {
+  position: relative;
+}
+
+#logo p {
+  width: 50%;
+  margin: auto;
+}
+
+#logo p img {
+  width: 100%;
+}
