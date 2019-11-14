@@ -203,7 +203,7 @@ let evaluate = (postfix, n) => {
 
 let view = [,,false, false, false, false];
 
-let eval = () => {
+let evall = () => {
   let x = document.getElementById("expression").value;
   let n = parseInt(document.getElementById("nsets").value);
   let p = '';

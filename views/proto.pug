@@ -1,6 +1,9 @@
-include mixins/_graph2.pug
 include mixins/_symbols.pug
 include mixins/_header.pug
+include mixins/_graph2.pug
+include mixins/_graph3.pug
+include mixins/_graph4.pug
+include mixins/_graph5.pug
 doctype html
 html
   head
@@ -49,14 +52,24 @@ html
                 | Símbolos disponibles
               #symbols.modal
                 +symbols()
-        #diagram.col.s12.l8          
+        .col.s12.l8          
           .row
             #logo.col.s12
               p
                 img(src="./../images/logo.jpg" alt="Logo chido")
+            #diagram.col.s12
+              #sets2.hide.center
+                +graph2()
+              #sets3.hide.center
+                +graph3()
+              #sets4.hide.center
+                +graph4()
+              #sets5.hide.center
+                +graph5()
+
 
   script(type="text/javascript" src="./../js/jquery-3.4.1.min.js")
   script(type="text/javascript" src="./../js/materialize.min.js")
-  //- script(type="text/javascript" src="./../js/graphing.js")
+  script(type="text/javascript" src="./../js/graphing.js")
   script(type="text/javascript" src="./../js/vdg.js")
   

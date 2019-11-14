@@ -131,3 +131,127 @@ i.eval {
 #logo p img {
   width: 100%;
 }
+
+#diagram {
+  position: relative;
+}
+
+#diagram .center {
+  margin: auto;
+}
+
+
+.contorno {
+  stroke: #ff8a00;
+  stroke-width: 4;
+  fill: transparent;
+  background: white;
+}
+
+.borrar {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+
+.contornoR {
+  stroke: #ff8a00;
+  stroke-width: 4;
+  fill: transparent;
+}
+
+.A3 {
+  r: 70;
+  cx: 71;
+  cy: 71;
+}
+
+.B3 {
+  r: 70;
+  cx: 171;
+  cy: 71;
+}
+
+.C3 {
+  r: 70;
+  cx: 121;
+  cy: 161;
+}
+
+.A4 {
+  r: 70;
+  cx: 71;
+  cy: 71;
+}
+
+.B4 {
+  r: 70;
+  cx: 151;
+  cy: 71;
+}
+
+.C4 {
+  r: 70;
+  cx: 71;
+  cy: 151;
+}
+
+.D4 {
+  r: 70;
+  cx: 151;
+  cy: 151;
+}
+
+.A5 {
+  r: 70;
+  cx: 127;
+  cy: 71;
+}
+
+.B5 {
+  r: 70;
+  cx: 184;
+  cy: 112;
+}
+
+.C5 {
+  r: 70;
+  cx: 164;
+  cy: 179;
+}
+
+.D5 {
+  r: 70;
+  cx: 91;
+  cy: 179;
+}
+
+.E5 {
+  r: 70;
+  cx: 71;
+  cy: 112;
+}
+
+.diagram {
+  position: relative;
+}
+
+#sets2 {
+  width: 241px;
+}
+
+#sets3 {
+  width: 241px;
+}
+
+#sets4 {
+  width: 222px;
+}
+
+#sets5 {
+  width: 255px;
+}
+
+.set {
+  fill: #C70039;
+}

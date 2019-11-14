@@ -6,11 +6,14 @@ $(() => {
   var selects = M.FormSelect.init(list, {});
 });
 
-let buildElements = () => {
+let userSets = () => {
   var sel = document.getElementById('n-sets');
   var option = sel.options[sel.selectedIndex].value;
-  var n = option === 'auto' ? 3 : Number.parseInt(option);
+  return option === 'auto' ? 3 : Number.parseInt(option);
+}
 
+let buildElements = () => {
+  var n = userSets();
   var data = '';
 
   for (var i = 0; i < n; ++i){
@@ -37,5 +40,30 @@ let toggleElements = () => {
 }
 
 let eval = () => {
-  console.log('Evaluación');
+  var x = document.getElementById("expression").value;
+  var n = userSets();
+  if (x){
+    document.getElementById('logo').classList.add('hide');
+
+    var p = toPost(x);
+    var e = evaluate(p, n);
+
+    for (var i = 2; i < 6; ++i){
+      var tmp = `sets${i}`;
+      if (i === n)
+        document.getElementById(tmp).classList.remove('hide');
+      else
+        document.getElementById(tmp).classList.add('hide');
+    }
+
+    for (var i = 0; i < e.length; ++i){
+      var tmp = `f${n}_${i + 1}`;
+
+      if (e[i])
+        document.getElementById(tmp).classList.remove('hide');
+      else
+        document.getElementById(tmp).classList.add('hide');
+
+    }
+  }
 }
