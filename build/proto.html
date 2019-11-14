@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./../css/materialize.min.css" media="screen,projection">
+    <link type="text/css" rel="stylesheet" href="./../css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venn Diagram Generator</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="row">
+        <div class="col s12 l5">
+          <h1>Venn Diagram Generator</h1>
+          <h2>Operaciones complejas, diagramas sencillos</h2>
+        </div>
+        <div class="col l7 hide-on-med-and-down naving">
+          <div class="row">
+            <div class="col s4">
+              <div><a class="waves-effect btn-flat" href="index.html">Inicio</a></div>
+            </div>
+            <div class="col s4">
+              <div class="top-selected"><a class="waves-effect btn-flat disabled" href="./graph.html">Graficador</a></div>
+            </div>
+            <div class="col s4">
+              <div><a class="waves-effect btn-flat" href="./about.html">Sobre nosotros</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container"><a class="top sidenav-trigger full hide-on-large-only" href="#" data-target="mobile-demo"><i class="material-icons">menu</i></a></div>
+      <ul class="sidenav" id="mobile-demo">
+        <h1>Navegación</h1>
+        <li><a class="waves-effect" href="index.html">Inicio</a></li>
+        <li><a class="waves-effect disabled top-selected" href="./graph.html">Graficador</a></li>
+        <li><a class="waves-effect" href="./about.html">Sobre nosotros</a></li>
+      </ul>
+    </header>
+    <main>
+      <div class="row">
+        <form class="col s12 l4">
+          <h1>Graficador</h1>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="expression" type="text">
+              <label for="expression">Ingresa la operación</label>
+            </div>
+            <div class="input-field col s12">
+              <select id="n-sets" onchange="buildElements()">
+                <option value="auto" selected>Selecciona un valor</option>
+                <option value="2">2 Conjuntos</option>
+                <option value="3">3 Conjuntos</option>
+                <option value="4">4 Conjuntos</option>
+                <option value="5">5 Conjuntos</option>
+              </select>
+              <label>Número de conjuntos</label>
+            </div>
+            <div class="input-field col s12 elements">
+              <p>
+                <label>
+                  <input id="useEl" type="checkbox" onclick="toggleElements()"><span>Elementos</span>
+                </label>
+              </p>
+              <div class="down" id="elements">
+                <div class="row"></div>
+              </div>
+            </div>
+            <div class="input-field col s12">
+              <button class="waves-effect waves-light btn eval" onclick="eval()" type="button"><i class="material-icons left">forward</i>Evaluar</button>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="col s12">
+              <p>Puedes consultar la tabla de símbolos disponibles aquí:</p>
+              <button class="waves-effect waves-light btn-flat modal-trigger" onclick="" type="button" data-target="symbols"><i class="material-icons left">note</i>Símbolos disponibles</button>
+              <div class="modal" id="symbols">
+                <div class="modal-content">
+                  <h1>Tabla de símbolos disponibles</h1>
+                  <div class="row">
+                    <div class="col s12">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Símbolo</th>
+                            <th scope="col">Significado</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>∅ - 0 - Ø</td>
+                            <td>Conjunto vacío</td>
+                          </tr>
+                          <tr>
+                            <td>Ω - O</td>
+                            <td>Universo</td>
+                          </tr>
+                          <tr>
+                            <td>S - s</td>
+                            <td>Ω - AUBU...</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer"><a class="modal-close waves-effect btn-flat">Aceptar</a></div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="col s12 l8">         
+          <div class="row">
+            <div class="col s12" id="logo">
+              <p><img src="./../images/logo.jpg" alt="Logo chido"></p>
+            </div>
+            <div class="col s12" id="diagram">
+              <div class="hide center" id="sets2">
+                <svg width="241" height="141">
+                  <defs>
+                    <mask id="s2_1">
+                      <rect class="borrar"/>
+                      <circle class="circulo B3"/>
+                    </mask>
+                    <mask id="s2_2">
+                      <rect class="borrar"/>
+                      <circle class="circulo A3"/>
+                    </mask>
+                    <mask id="s2_3">
+                      <rect class="borrar"/>
+                      <circle class="A3" mask="url(#s2_1)"/>
+                      <circle class="B3" mask="url(#s2_2)"/>
+                    </mask>
+                    <mask id="s2_4">
+                      <rect class="borrar"/>
+                      <circle class="circulo B3"/>
+                      <circle class="circulo A3"/>
+                    </mask>
+                  </defs>
+                  <circle class="A3 set hide" id="f2_1" mask="url(#s2_1)"/>
+                  <circle class="B3 set hide" id="f2_2" mask="url(#s2_2)"/>
+                  <circle class="A3 set hide" id="f2_3" mask="url(#s2_3)"/>
+                  <rect class="set hide" id="f2_4" width="241" height="141" mask="url(#s2_4)"/>
+                  <circle class="A3 circulo contorno"/>
+                  <circle class="B3 circulo contorno"/>
+                  <rect class="contornoR" width="241" height="141"/>
+                </svg>
+              </div>
+              <div class="hide center" id="sets3">
+                <svg width="241" height="231">
+                  <defs>
+                    <mask id="s3_1">
+                      <rect class="borrar"/>
+                      <circle class="circulo C3"/>
+                      <circle class="circulo B3"/>
+                    </mask>
+                    <mask id="s3_2">
+                      <rect class="borrar"/>
+                      <circle class="circulo C3"/>
+                      <circle class="circulo A3"/>
+                    </mask>
+                    <mask id="s3_3">
+                      <rect class="borrar"/>
+                      <circle class="circulo B3"/>
+                      <circle class="circulo A3"/>
+                    </mask>
+                    <mask id="s3_4">
+                      <rect class="borrar"/>
+                      <circle class="circulo C3"/>
+                      <circle class="circulo A3" mask="url(#s3_1)"/>
+                      <circle class="circulo B3" mask="url(#s3_2)"/>
+                    </mask>
+                    <mask id="s3_5">
+                      <rect class="borrar"/>
+                      <circle class="circulo A3"/>
+                      <circle class="circulo C3" mask="url(#s3_3)"/>
+                      <circle class="circulo B3" mask="url(#s3_2)"/>
+                    </mask>
+                    <mask id="s3_6">
+                      <rect class="borrar"/>
+                      <circle class="circulo B3"/>
+                      <circle class="circulo C3" mask="url(#s3_3)"/>
+                      <circle class="circulo A3" mask="url(#s3_1)"/>
+                    </mask>
+                    <mask id="s3_7">
+                      <rect class="borrar"/>
+                      <circle class="circulo A3" mask="url(#s3_1)"/>
+                      <circle class="circulo A3" mask="url(#s3_4)"/>
+                      <circle class="circulo A3" mask="url(#s3_6)"/>
+                      <circle class="circulo C3" mask="url(#s3_3)"/>
+                      <circle class="circulo B3" mask="url(#s3_2)"/>
+                      <circle class="circulo B3" mask="url(#s3_5)"/>
+                    </mask>
+                    <mask id="s3_8">
+                      <rect class="borrar"/>
+                      <circle class="circulo B3"/>
+                      <circle class="circulo C3"/>
+                      <circle class="circulo A3"/>
+                    </mask>
+                  </defs>
+                  <circle class="set A3" id="f3_1" mask="url(#s3_1)"/>
+                  <circle class="set B3 hide" id="f3_2" mask="url(#s3_2)"/>
+                  <circle class="set C3 hide" id="f3_3" mask="url(#s3_3)"/>
+                  <circle class="set A3 hide" id="f3_4" mask="url(#s3_4)"/>
+                  <circle class="set B3 hide" id="f3_5" mask="url(#s3_5)"/>
+                  <circle class="set C3 hide" id="f3_6" mask="url(#s3_6)"/>
+                  <circle class="set C3 hide" id="f3_7" mask="url(#s3_7)"/>
+                  <rect class="set hide" id="f3_8" width="241" height="231" mask="url(#s3_8)"/>
+                  <circle class="A3 circulo contorno"/>
+                  <circle class="B3 circulo contorno"/>
+                  <circle class="C3 circulo contorno"/>
+                  <rect class="contornoR" width="241" height="231"/>
+                </svg>
+              </div>
+              <div class="hide center" id="sets4">
+                <svg width="222" height="222">
+                  <defs>
+                    <mask id="s4_1">
+                      <rect class="borrar"/>
+                      <circle class="circulo D4"/>
+                      <circle class="circulo C4"/>
+                      <circle class="circulo B4"/>
+                    </mask>
+                    <mask id="s4_2">
+                      <rect class="borrar"/>
+                      <circle class="circulo D4"/>
+                      <circle class="circulo C4"/>
+                      <circle class="circulo A4"/>
+                    </mask>
+                    <mask id="s4_3">
+                      <rect class="borrar"/>
+                      <circle class="circulo C4"/>
+                      <circle class="circulo B4"/>
+                      <circle class="circulo A4"/>
+                    </mask>
+                    <mask id="s4_4">
+                      <rect class="borrar"/>
+                      <circle class="circulo D4"/>
+                      <circle class="circulo B4"/>
+                      <circle class="circulo A4"/>
+                    </mask>
+                    <mask id="s4_5">
+                      <rect class="borrar"/>
+                      <circle class="circulo C4"/>
+                      <circle class="circulo D4"/>
+                      <circle class="circulo A4" mask="url(#s4_1)"/>
+                      <circle class="circulo B4" mask="url(#s4_2)"/>
+                    </mask>
+                    <mask id="s4_6">
+                      <rect class="borrar"/>
+                      <circle class="circulo C4"/>
+                      <circle class="circulo A4"/>
+                      <circle class="circulo A4" mask="url(#s4_3)"/>
+                      <circle class="circulo B4" mask="url(#s4_2)"/>
+                    </mask>
+                    <mask id="s4_7">
+                      <rect class="borrar"/>
+                      <circle class="circulo B4"/>
+                      <circle class="circulo A4"/>
+                      <circle class="C4" mask="url(#s4_4)"/>
+                      <circle class="D4" mask="url(#s4_3)"/>
+                    </mask>
+                    <mask id="s4_8">
+                      <rect class="borrar"/>
+                      <circle class="circulo B4"/>
+                      <circle class="circulo D4"/>
+                      <circle class="A4" mask="url(#s4_1)"/>
+                      <circle class="D4" mask="url(#s4_4)"/>
+                    </mask>
+                    <mask id="s4_9">
+                      <rect class="borrar"/>
+                      <circle class="D4"/>
+                      <circle class="A4" mask="url(#s4_1)"/>
+                      <circle class="A4" mask="url(#s4_5)"/>
+                      <circle class="A4" mask="url(#s4_8)"/>
+                    </mask>
+                    <mask id="s4_10">
+                      <rect class="borrar"/>
+                      <circle class="C4"/>
+                      <circle class="B4" mask="url(#s4_2)"/>
+                      <circle class="A4" mask="url(#s4_5)"/>
+                      <circle class="B4" mask="url(#s4_6)"/>
+                    </mask>
+                    <mask id="s4_11">
+                      <rect class="borrar"/>
+                      <circle class="A4"/>
+                      <circle class="D4" mask="url(#s4_3)"/>
+                      <circle class="B4" mask="url(#s4_6)"/>
+                      <circle class="C4" mask="url(#s4_7)"/>
+                    </mask>
+                    <mask id="s4_12">
+                      <rect class="borrar"/>
+                      <circle class="B4"/>
+                      <circle class="C4" mask="url(#s4_4)"/>
+                      <circle class="C4" mask="url(#s4_7)"/>
+                      <circle class="A4" mask="url(#s4_8)"/>
+                    </mask>
+                    <mask id="s4_13">
+                      <rect class="borrar"/>
+                      <circle class="A4" mask="url(#s4_1)"/>
+                      <circle class="B4" mask="url(#s4_2)"/>
+                      <circle class="D4" mask="url(#s4_3)"/>
+                      <circle class="C4" mask="url(#s4_4)"/>
+                      <circle class="A4" mask="url(#s4_5)"/>
+                      <circle class="B4" mask="url(#s4_6)"/>
+                      <circle class="C4" mask="url(#s4_7)"/>
+                      <circle class="A4" mask="url(#s4_8)"/>
+                      <circle class="A4" mask="url(#s4_9)"/>
+                      <circle class="B4" mask="url(#s4_10)"/>
+                      <circle class="D4" mask="url(#s4_11)"/>
+                      <circle class="C4" mask="url(#s4_12)"/>
+                    </mask>
+                    <mask id="s4_14">
+                      <rect class="borrar"/>
+                      <circle class="A4" mask="url(#s4_1)"/>
+                      <circle class="B4" mask="url(#s4_2)"/>
+                      <circle class="D4" mask="url(#s4_3)"/>
+                      <circle class="C4" mask="url(#s4_4)"/>
+                      <circle class="A4" mask="url(#s4_5)"/>
+                      <circle class="B4" mask="url(#s4_6)"/>
+                      <circle class="C4" mask="url(#s4_7)"/>
+                      <circle class="A4" mask="url(#s4_8)"/>
+                      <circle class="A4" mask="url(#s4_9)"/>
+                      <circle class="B4" mask="url(#s4_10)"/>
+                      <circle class="D4" mask="url(#s4_11)"/>
+                      <circle class="C4" mask="url(#s4_12)"/>
+                      <circle class="C4" mask="url(#s4_13)"/>
+                    </mask>
+                  </defs>
+                  <circle class="set A4 hide" id="f4_1" mask="url(#s4_1)"/>
+                  <circle class="set B4 hide" id="f4_2" mask="url(#s4_2)"/>
+                  <circle class="set D4 hide" id="f4_3" mask="url(#s4_3)"/>
+                  <circle class="set C4 hide" id="f4_4" mask="url(#s4_4)"/>
+                  <circle class="set A4 hide" id="f4_5" mask="url(#s4_5)"/>
+                  <circle class="set B4 hide" id="f4_6" mask="url(#s4_6)"/>
+                  <circle class="set C4 hide" id="f4_7" mask="url(#s4_7)"/>
+                  <circle class="set A4 hide" id="f4_8" mask="url(#s4_8)"/>
+                  <circle class="set A4 hide" id="f4_9" mask="url(#s4_9)"/>
+                  <circle class="set B4 hide" id="f4_10" mask="url(#s4_10)"/>
+                  <circle class="set D4 hide" id="f4_11" mask="url(#s4_11)"/>
+                  <circle class="set C4 hide" id="f4_12" mask="url(#s4_12)"/>
+                  <circle class="set C4 hide" id="f4_13" mask="url(#s4_13)"/>
+                  <rect class="set hide" id="f4_14" width="222" height="222" mask="url(#s4_14)"/>
+                  <circle class="A4 circulo contorno"/>
+                  <circle class="B4 circulo contorno"/>
+                  <circle class="C4 circulo contorno"/>
+                  <circle class="D4 circulo contorno"/>
+                  <rect class="contornoR" width="222" height="222"/>
+                </svg>
+              </div>
+              <div class="hide center" id="sets5">
+                <svg width="255" height="250">
+                  <defs>
+                    <mask id="s5_1">
+                      <rect class="borrar"/>
+                      <circle class="circulo D5"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="circulo E5"/>
+                    </mask>
+                    <mask id="s5_2">
+                      <rect class="borrar"/>
+                      <circle class="circulo D5"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo E5"/>
+                    </mask>
+                    <mask id="s5_3">
+                      <rect class="borrar"/>
+                      <circle class="circulo D5"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="circulo E5"/>
+                    </mask>
+                    <mask id="s5_4">
+                      <rect class="borrar"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="circulo E5"/>
+                    </mask>
+                    <mask id="s5_5">
+                      <rect class="borrar"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="circulo D5"/>
+                    </mask>
+                    <mask id="s5_6">
+                      <rect class="borrar"/>
+                      <circle class="circulo D5"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo E5"/>
+                      <circle class="A5" mask="url(#s5_1)"/>
+                      <circle class="B5" mask="url(#s5_2)"/>
+                    </mask>
+                    <mask id="s5_7">
+                      <rect class="borrar"/>
+                      <circle class="circulo D5"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo E5"/>
+                      <circle class="B5" mask="url(#s5_2)"/>
+                      <circle class="C5" mask="url(#s5_3)"/>
+                    </mask>
+                    <mask id="s5_8">
+                      <rect class="borrar"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="circulo E5"/>
+                      <circle class="C5" mask="url(#s5_3)"/>
+                      <circle class="D5" mask="url(#s5_4)"/>
+                    </mask>
+                    <mask id="s5_9">
+                      <rect class="borrar"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="D5" mask="url(#s5_4)"/>
+                      <circle class="E5" mask="url(#s5_5)"/>
+                    </mask>
+                    <mask id="s5_10">
+                      <rect class="borrar"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="circulo D5"/>
+                      <circle class="A5" mask="url(#s5_1)"/>
+                      <circle class="E5" mask="url(#s5_5)"/>
+                    </mask>
+                    <mask id="s5_11">
+                      <rect class="borrar"/>
+                      <circle class="circulo D5"/>
+                      <circle class="circulo C5"/>
+                      <circle class="A5" mask="url(#s5_1)"/>
+                      <circle class="A5" mask="url(#s5_6)"/>
+                      <circle class="E5" mask="url(#s5_10)"/>
+                    </mask>
+                    <mask id="s5_12">
+                      <rect class="borrar"/>
+                      <circle class="circulo D5"/>
+                      <circle class="circulo E5"/>
+                      <circle class="B5" mask="url(#s5_2)"/>
+                      <circle class="A5" mask="url(#s5_6)"/>
+                      <circle class="B5" mask="url(#s5_7)"/>
+                    </mask>
+                    <mask id="s5_13">
+                      <rect class="borrar"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo E5"/>
+                      <circle class="C5" mask="url(#s5_3)"/>
+                      <circle class="B5" mask="url(#s5_7)"/>
+                      <circle class="C5" mask="url(#s5_8)"/> 
+                    </mask>
+                    <mask id="s5_14">
+                      <rect class="borrar"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="D5" mask="url(#s5_4)"/>
+                      <circle class="C5" mask="url(#s5_8)"/>
+                      <circle class="D5" mask="url(#s5_9)"/>
+                    </mask>
+                    <mask id="s5_15">
+                      <rect class="borrar"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="E5" mask="url(#s5_5)"/>
+                      <circle class="D5" mask="url(#s5_9)"/>
+                      <circle class="E5" mask="url(#s5_10)"/>
+                    </mask>
+                    <mask id="s5_16">
+                      <rect class="borrar"/>
+                      <circle class="circulo D5"/>
+                      <circle class="A5" mask="url(#s5_1)"/>
+                      <circle class="A5" mask="url(#s5_6)"/>
+                      <circle class="E5" mask="url(#s5_10)"/>
+                      <circle class="A5" mask="url(#s5_11)"/>
+                      <circle class="B5" mask="url(#s5_12)"/>
+                    </mask>
+                    <mask id="s5_17">
+                      <rect class="borrar"/>
+                      <circle class="circulo E5"/>
+                      <circle class="B5" mask="url(#s5_2)"/>
+                      <circle class="A5" mask="url(#s5_6)"/>
+                      <circle class="B5" mask="url(#s5_7)"/>
+                      <circle class="B5" mask="url(#s5_12)"/>
+                      <circle class="C5" mask="url(#s5_13)"/>
+                    </mask>
+                    <mask id="s5_18">
+                      <rect class="borrar"/>
+                      <circle class="circulo A5"/>
+                      <circle class="C5" mask="url(#s5_3)"/>
+                      <circle class="B5" mask="url(#s5_7)"/>
+                      <circle class="C5" mask="url(#s5_8)"/>
+                      <circle class="C5" mask="url(#s5_13)"/>
+                      <circle class="D5" mask="url(#s5_14)"/>
+                    </mask>
+                    <mask id="s5_19">
+                      <rect class="borrar"/>
+                      <circle class="circulo B5"/>
+                      <circle class="D5" mask="url(#s5_4)"/>
+                      <circle class="C5" mask="url(#s5_8)"/>
+                      <circle class="D5" mask="url(#s5_9)"/>
+                      <circle class="D5" mask="url(#s5_14)"/>
+                      <circle class="E5" mask="url(#s5_15)"/>
+                    </mask>
+                    <mask id="s5_20">
+                      <rect class="borrar"/>
+                      <circle class="circulo C5"/>
+                      <circle class="E5" mask="url(#s5_5)"/>
+                      <circle class="D5" mask="url(#s5_9)"/>
+                      <circle class="E5" mask="url(#s5_10)"/>
+                      <circle class="A5" mask="url(#s5_11)"/>
+                      <circle class="E5" mask="url(#s5_15)"/>
+                    </mask>
+                    <mask id="s5_21">
+                      <rect class="borrar"/>
+                      <circle class="A5" mask="url(#s5_1)"/>
+                      <circle class="A5" mask="url(#s5_6)"/>
+                      <circle class="E5" mask="url(#s5_10)"/>
+                      <circle class="A5" mask="url(#s5_11)"/>
+                      <circle class="B5" mask="url(#s5_12)"/>
+                      <circle class="E5" mask="url(#s5_15)"/>
+                      <circle class="A5" mask="url(#s5_16)"/>
+                      <circle class="B5" mask="url(#s5_17)"/>
+                      <circle class="D5" mask="url(#s5_19)"/>
+                      <circle class="E5" mask="url(#s5_20)"/>
+                    </mask>
+                    <mask id="s5_22">
+                      <rect class="borrar"/>
+                      <circle class="circulo A5"/>
+                      <circle class="circulo D5"/>
+                      <circle class="circulo C5"/>
+                      <circle class="circulo B5"/>
+                      <circle class="circulo E5"/>
+                    </mask>
+                  </defs>
+                  <circle class="set A5 hide" id="f5_1" mask="url(#s5_1)"/>
+                  <circle class="set B5 hide" id="f5_2" mask="url(#s5_2)"/>
+                  <circle class="set C5 hide" id="f5_3" mask="url(#s5_3)"/>
+                  <circle class="set D5 hide" id="f5_4" mask="url(#s5_4)"/>
+                  <circle class="set E5 hide" id="f5_5" mask="url(#s5_5)"/>
+                  <circle class="set A5 hide" id="f5_6" mask="url(#s5_6)"/>
+                  <circle class="set B5 hide" id="f5_7" mask="url(#s5_7)"/>
+                  <circle class="set C5 hide" id="f5_8" mask="url(#s5_8)"/>
+                  <circle class="set D5 hide" id="f5_9" mask="url(#s5_9)"/>
+                  <circle class="set E5 hide" id="f5_10" mask="url(#s5_10)"/>
+                  <circle class="set A5 hide" id="f5_11" mask="url(#s5_11)"/>
+                  <circle class="set B5 hide" id="f5_12" mask="url(#s5_12)"/>
+                  <circle class="set C5 hide" id="f5_13" mask="url(#s5_13)"/>
+                  <circle class="set D5 hide" id="f5_14" mask="url(#s5_14)"/>
+                  <circle class="set E5 hide" id="f5_15" mask="url(#s5_15)"/>
+                  <circle class="set A5 hide" id="f5_16" mask="url(#s5_16)"/>
+                  <circle class="set B5 hide" id="f5_17" mask="url(#s5_17)"/>
+                  <circle class="set C5 hide" id="f5_18" mask="url(#s5_18)"/>
+                  <circle class="set D5 hide" id="f5_19" mask="url(#s5_19)"/>
+                  <circle class="set E5 hide" id="f5_20" mask="url(#s5_20)"/>
+                  <circle class="set A5 hide" id="f5_21" mask="url(#s5_21)"/>
+                  <rect class="set hide" id="f5_22" width="255" height="250" mask="url(#s5_22)"/>
+                  <circle class="A5 circulo contorno"/>
+                  <circle class="B5 circulo contorno"/>
+                  <circle class="C5 circulo contorno"/>
+                  <circle class="D5 circulo contorno"/>
+                  <circle class="E5 circulo contorno"/>
+                  <rect class="contornoR" width="255" height="250"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script type="text/javascript" src="./../js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="./../js/materialize.min.js"></script>
+  <script type="text/javascript" src="./../js/graphing.js"></script>
+  <script type="text/javascript" src="./../js/vdg.js"></script>
+</html>

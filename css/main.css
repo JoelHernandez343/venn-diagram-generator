@@ -294,3 +294,23 @@ button.eval i {
 #index header {
   padding-bottom: 10px;
 }
+
+#index main h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+#index main p {
+  font-size: 1em;
+}
+
+.promo i {
+  font-size: 4em;
+  background: linear-gradient(45deg,#ff8a00,#e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.promo h2 {
+  margin-top: 15px;
+}
