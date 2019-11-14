@@ -1,5 +1,5 @@
-include mixins/_symbols.pug
 include mixins/_header.pug
+include mixins/_symbols.pug
 include mixins/_graph2.pug
 include mixins/_graph3.pug
 include mixins/_graph4.pug
@@ -17,6 +17,9 @@ html
   body
     +top(1)
     main
+      .fixed-action-btn
+        a.btn-floating.btn-large.waves-effect.waves-light.red
+          i.material-icons file_download
       .row
         form.col.s12.l4
           h1 Graficador
@@ -26,7 +29,7 @@ html
               label(for="expression") Ingresa la operación
             .input-field.col.s12
               select#n-sets(onchange="buildElements()")
-                option(value="auto" selected) Selecciona una valor
+                option(value="auto" selected) Selecciona un valor
                 option(value="2") 2 Conjuntos
                 option(value="3") 3 Conjuntos
                 option(value="4") 4 Conjuntos

@@ -156,10 +156,13 @@ button.eval i {
   margin: auto;
 }
 
+.fixed-action-btn a {
+  background: linear-gradient(45deg,#ff8a00,#e52e71);
+}
 
 .contorno {
-  stroke: #ff8a00;
-  stroke-width: 4;
+  stroke: #979797;
+  stroke-width: 1;
   fill: transparent;
   background: white;
 }
@@ -171,8 +174,8 @@ button.eval i {
 }
 
 .contornoR {
-  stroke: #ff8a00;
-  stroke-width: 4;
+  stroke: #979797;
+  stroke-width: 2;
   fill: transparent;
 }
 
@@ -269,5 +272,25 @@ button.eval i {
 }
 
 .set {
-  fill: #C70039;
+  fill: #581845;
+}
+
+/* Index html */
+.up {
+  position: absolute;
+  top: 0;
+  float: none;
+  z-index: -2;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.up #particles-js{
+  height: 100%;
+  background-color: #E5E7E9;
+}
+
+#index header {
+  padding-bottom: 10px;
 }
