@@ -65,6 +65,8 @@ let eval = () => {
     var p = toPost(x);
     var e = evaluate(p, n);
 
+    console.log(e);
+
     for (var i = 2; i < 6; ++i){
       var tmp = `sets${i}`;
       if (i === n)
@@ -77,9 +79,11 @@ let eval = () => {
       var tmp = `f${n}_${i + 1}`;
 
       if (e[i])
-        document.getElementById(tmp).classList.remove('hide');
+        document.getElementById(tmp).classList.add('p');
+
       else
-        document.getElementById(tmp).classList.add('hide');
+        document.getElementById(tmp).classList.remove('p');
+
     }
 
     var val = document.getElementById("useEl").checked;

@@ -1,9 +1,10 @@
 include mixins/_header.pug
 include mixins/_symbols.pug
-include mixins/_graph2.pug
-include mixins/_graph3.pug
-include mixins/_graph4.pug
-include mixins/_graph5.pug
+include mixins/_svg_effects.pug
+include mixins/_diagram2.pug
+include mixins/_diagram3.pug
+include mixins/_diagram4.pug
+include mixins/_diagram5.pug
 doctype html
 html
   head
@@ -60,14 +61,15 @@ html
               p
                 img(src="./../images/logo.jpg" alt="Logo chido")
             #diagram.col.s12
+              +effects()
               #sets2.hide.center
-                +graph2()
+                +diagram2()
               #sets3.hide.center
-                +graph3()
+                +diagram3()
               #sets4.hide.center
-                +graph4()
+                +diagram4()
               #sets5.hide.center
-                +graph5()
+                +diagram5()
               .row
                 #elements-result.col.s12.center-align
 

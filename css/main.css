@@ -160,95 +160,26 @@ button.eval i {
   background: linear-gradient(45deg,#ff8a00,#e52e71);
 }
 
-.contorno {
-  stroke: #979797;
-  stroke-width: 1;
+svg path {
   fill: transparent;
-  background: white;
+  stroke: #1d1e22;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 0.8%;
 }
 
-.borrar {
-  width: 100%;
-  height: 100%;
-  fill: white;
+.p {
+  fill: #9e9e9e;
 }
 
-.contornoR {
-  stroke: #979797;
-  stroke-width: 2;
-  fill: transparent;
+.p:hover {
+  fill: url(#svg-grad);
+  filter: url(#svg-shadow);
 }
 
-.A3 {
-  r: 70;
-  cx: 71;
-  cy: 71;
-}
-
-.B3 {
-  r: 70;
-  cx: 171;
-  cy: 71;
-}
-
-.C3 {
-  r: 70;
-  cx: 121;
-  cy: 161;
-}
-
-.A4 {
-  r: 70;
-  cx: 71;
-  cy: 71;
-}
-
-.B4 {
-  r: 70;
-  cx: 151;
-  cy: 71;
-}
-
-.C4 {
-  r: 70;
-  cx: 71;
-  cy: 151;
-}
-
-.D4 {
-  r: 70;
-  cx: 151;
-  cy: 151;
-}
-
-.A5 {
-  r: 70;
-  cx: 127;
-  cy: 71;
-}
-
-.B5 {
-  r: 70;
-  cx: 184;
-  cy: 112;
-}
-
-.C5 {
-  r: 70;
-  cx: 164;
-  cy: 179;
-}
-
-.D5 {
-  r: 70;
-  cx: 91;
-  cy: 179;
-}
-
-.E5 {
-  r: 70;
-  cx: 71;
-  cy: 112;
+.svg-effects {
+  height: 0;
+  width: 0;
 }
 
 .diagram {
@@ -256,23 +187,55 @@ button.eval i {
 }
 
 #sets2 {
-  width: 241px;
+  width: 60%;
 }
 
 #sets3 {
-  width: 241px;
+  width: 60%;
 }
 
 #sets4 {
-  width: 222px;
+  width: 60%;
 }
 
 #sets5 {
-  width: 255px;
+  width: 60%;
 }
 
-.set {
-  fill: #581845;
+@media only screen and (max-width: 992px){
+  #sets2 {
+    width: 75%;
+  }
+  
+  #sets3 {
+    width: 75%;
+  }
+  
+  #sets4 {
+    width: 75%;
+  }
+
+  #sets5 {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  #sets2 {
+    width: 100%;
+  }
+  
+  #sets3 {
+    width: 100%;
+  }
+  
+  #sets4 {
+    width: 100%;
+  }
+
+  #sets5 {
+    width: 100%;
+  }
 }
 
 /* Index html */
