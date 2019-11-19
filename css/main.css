@@ -238,6 +238,42 @@ svg path {
   }
 }
 
+.receptor {
+  position: relative;
+}
+
+#float {
+  position: absolute;
+  width: 250px;
+  height: 0px;
+  top: 0px;
+  background-color: #CACCCF;
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 0px;
+  box-shadow: none;
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#float.show {
+  top: 50px;
+  height: 100px;
+  box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+  border-radius: 3px;
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#float .float-content {
+  padding-top: 10px;
+  position: relative;
+}
+
+#float .float-content h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
 /* Index html */
 .up {
   position: absolute;

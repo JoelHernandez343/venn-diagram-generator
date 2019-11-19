@@ -15,7 +15,10 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
   
     title Venn Diagram Generator
+
   body
+    .receptor.hide-on-med-and-down
+      #float
     +top(1)
     main
       .fixed-action-btn
@@ -76,6 +79,7 @@ html
 
   script(type="text/javascript" src="./../js/jquery-3.4.1.min.js")
   script(type="text/javascript" src="./../js/materialize.min.js")
+  script(type="text/javascript" src="./../js/init.js")
   script(type="text/javascript" src="./../js/graphing.js")
   script(type="text/javascript" src="./../js/elements.js")
   script(type="text/javascript" src="./../js/vdg.js")

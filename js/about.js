@@ -1,7 +1,8 @@
-$(() => {
-  $('.sidenav').sidenav();
-  $('.modal').modal();
-  
-  var list = document.querySelectorAll('select');
-  var selects = M.FormSelect.init(list, {});
-});
+let initialization = () => {
+  var sidenavs = M.Sidenav.init(D.queryAll('.sidenav'));
+}
+
+if (D.readyState === 'loading')
+  D.addEventListener('DOMContentLoaded', initialization);
+else
+  initialization();

@@ -1,10 +1,3 @@
-$(() => {
-  $('.sidenav').sidenav();
-  $('.modal').modal();
-  
-  var list = document.querySelectorAll('select');
-  var selects = M.FormSelect.init(list, {});
-});
 
 let userSets = () => {
   var sel = document.getElementById('n-sets');
@@ -107,3 +100,67 @@ let eval = () => {
     }
   }
 }
+
+let recalculate = (x, y) => {
+  var float = D.getId('float');
+  console.log(float.style.width);
+  float.style.left = `${x - 20 - 250}px`;
+  float.style.top = `${y + 20}px`;
+}
+
+let floatState;
+
+let floatClick = function(e){
+  var float = D.getId('float');
+
+  if (!float.classList.contains('show') || this !== floatState)
+    recalculate(e.clientX, e.clientY);
+
+  if (this === floatState)
+    float.classList.toggle('show');
+  else
+    float.classList.add('show');
+
+  var content = D.create('div');
+  content.className = 'float-content';
+
+  var data = '<div class = "row"><div class="col s12">';
+  data += `<h1>${this.id}</h1>`;
+  data += 'Aquí van a ir los elementos';
+  data += '</div></div>';
+
+  content.innerHTML = data;
+  
+  while (float.firstChild)
+    float.removeChild(float.firstChild);
+
+  float.appendChild(content);
+
+  floatState = this;
+}
+
+
+const outsideClick = e => {
+  var float = D.getId('float');
+
+  if (e.target.tagName !== 'path' && !float.contains(e.target))
+    float.classList.remove('show');
+}
+
+let initialization = () => {
+  var sidenavs = M.Sidenav.init(D.queryAll('.sidenav'));
+  var modals = M.Modal.init(D.queryAll('.modal'));
+  var selects = M.FormSelect.init(D.queryAll('select'));
+
+  var paths = D.getTags('path');
+
+  for (var i = 0; i < paths.length; ++i)
+    if (paths[i].id) paths[i].addEventListener('click', floatClick);
+
+  D.addEventListener('click', outsideClick);
+}
+
+if (D.readyState === 'loading')
+  D.addEventListener('DOMContentLoaded', initialization);
+else
+  initialization();
