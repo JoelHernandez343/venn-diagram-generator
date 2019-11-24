@@ -94,36 +94,47 @@ mixin diagram5()
   - var _32 = 'M45.2,68.1c0.5,1.2,1,2.3,1.5,3.4c-4.7-0.6-9.5-1.7-14.2-3.3c-12.8-4.3-23.6-11.7-32-21.1'
   - _32 += 'c1.6-4.4,3.6-8.8,6.1-13c3.3-5.6,7.2-10.6,11.6-14.9l27-18.4c0.2,1.3,0.4,2.5,0.8,3.8l6.1,22.4C42.6,38,39.4,53.8,45.2,68.1z'
 
-  svg(viewBox="0 0 303 303")
-    path#f5_32(d=`${_1}`)/
-    path#f5_1(transform="translate(101,16)" d=`${_2}`)/
-    path#f5_2(transform="translate(222.5,69)" d=`${_3}`)/
-    path#f5_3(transform="translate(120,209)" d=`${_4}`)/
-    path#f5_4(transform="translate(29.5,172)" d=`${_5}`)/
-    path#f5_5(transform="translate(15,47)" d=`${_6}`)/
-    path#f5_9(transform="translate(88,48)" d=`${_7}`)/
-    path#f5_8(transform="translate(143,69)" d=`${_8}`)/
-    path#f5_21(transform="translate(127,71)" d=`${_9}`)/
-    path#f5_20(transform="translate(88,81)" d=`${_10}`)/
-    path#f5_13(transform="translate(92.5,211)" d=`${_11}`)/
-    path#f5_7(transform="translate(170.5,213)" d=`${_12}`)/
-    path#f5_19(transform="translate(130,212)" d=`${_13}`)/
-    path#f5_10(transform="translate(198,165)" d=`${_14}`)/
-    path#f5_16(transform="translate(177.5,191)" d=`${_15}`)/
-    path#f5_23(transform="translate(204.5,156)" d=`${_16}`)/
-    path#f5_12(transform="translate(214,137)" d=`${_17}`)/
-    path#f5_26(transform="translate(123,188)" d=`${_18}`)/
-    path#f5_22(transform="translate(92,191)" d=`${_19}`)/
-    path#f5_11(transform="translate(80,196)" d=`${_20}`)/
-    path#f5_27(transform="translate(178,138)" d=`${_21}`)/
-    path#f5_18(transform="translate(187.5,114)" d=`${_22}`)/
-    path#f5_31(transform="translate(105.5,98)" d=`${_23}`)/
-    path#f5_28(transform="translate(150.5,87)" d=`${_24}`)/
-    path#f5_6(transform="translate(174,65)" d=`${_25}`)/
-    path#f5_17(transform="translate(159.5,74)" d=`${_26}`)/
-    path#f5_29(transform="translate(93.5,82)" d=`${_27}`)/
-    path#f5_30(transform="translate(86,138.5)" d=`${_28}`)/
-    path#f5_24(transform="translate(76,152)" d=`${_29}`)/
-    path#f5_25(transform="translate(79,115.5)" d=`${_30}`)/
-    path#f5_14(transform="translate(78.5,94)" d=`${_31}`)/
-    path#f5_15(transform="translate(34,126)" d=`${_32}`)/
+  svg(viewBox="0 0 303 303" xmlns="http://www.w3.org/2000/svg")
+    style
+      |  .dg {
+      |    fill: #E5E7E9;
+      |    stroke: #1d1e22;
+      |    stroke-linecap: round;
+      |    stroke-linejoin: round;
+      |    stroke-width: 0.8%;
+      |  } 
+      |  .p {
+      |    fill: #9e9e9e !important;
+      |  }
+    path#f5_32.dg(d=`${_1}`)/
+    path#f5_1.dg(transform="translate(101,16)" d=`${_2}`)/
+    path#f5_2.dg(transform="translate(222.5,69)" d=`${_3}`)/
+    path#f5_3.dg(transform="translate(120,209)" d=`${_4}`)/
+    path#f5_4.dg(transform="translate(29.5,172)" d=`${_5}`)/
+    path#f5_5.dg(transform="translate(15,47)" d=`${_6}`)/
+    path#f5_9.dg(transform="translate(88,48)" d=`${_7}`)/
+    path#f5_8.dg(transform="translate(143,69)" d=`${_8}`)/
+    path#f5_21.dg(transform="translate(127,71)" d=`${_9}`)/
+    path#f5_20.dg(transform="translate(88,81)" d=`${_10}`)/
+    path#f5_13.dg(transform="translate(92.5,211)" d=`${_11}`)/
+    path#f5_7.dg(transform="translate(170.5,213)" d=`${_12}`)/
+    path#f5_19.dg(transform="translate(130,212)" d=`${_13}`)/
+    path#f5_10.dg(transform="translate(198,165)" d=`${_14}`)/
+    path#f5_16.dg(transform="translate(177.5,191)" d=`${_15}`)/
+    path#f5_23.dg(transform="translate(204.5,156)" d=`${_16}`)/
+    path#f5_12.dg(transform="translate(214,137)" d=`${_17}`)/
+    path#f5_26.dg(transform="translate(123,188)" d=`${_18}`)/
+    path#f5_22.dg(transform="translate(92,191)" d=`${_19}`)/
+    path#f5_11.dg(transform="translate(80,196)" d=`${_20}`)/
+    path#f5_27.dg(transform="translate(178,138)" d=`${_21}`)/
+    path#f5_18.dg(transform="translate(187.5,114)" d=`${_22}`)/
+    path#f5_31.dg(transform="translate(105.5,98)" d=`${_23}`)/
+    path#f5_28.dg(transform="translate(150.5,87)" d=`${_24}`)/
+    path#f5_6.dg(transform="translate(174,65)" d=`${_25}`)/
+    path#f5_17.dg(transform="translate(159.5,74)" d=`${_26}`)/
+    path#f5_29.dg(transform="translate(93.5,82)" d=`${_27}`)/
+    path#f5_30.dg(transform="translate(86,138.5)" d=`${_28}`)/
+    path#f5_24.dg(transform="translate(76,152)" d=`${_29}`)/
+    path#f5_25.dg(transform="translate(79,115.5)" d=`${_30}`)/
+    path#f5_14.dg(transform="translate(78.5,94)" d=`${_31}`)/
+    path#f5_15.dg(transform="translate(34,126)" d=`${_32}`)/

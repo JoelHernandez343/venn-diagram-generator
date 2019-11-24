@@ -160,25 +160,25 @@ button.eval i {
   background: linear-gradient(45deg,#ff8a00,#e52e71);
 }
 
-svg path {
-  fill: transparent;
+.dg {
+  fill: #E5E7E9;
   stroke: #1d1e22;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 0.8%;
 }
 
-path:hover {
+.dg:hover {
   fill: #CACACA;
   filter: url(#svg-shadow);
 }
 
 .p {
-  fill: #9e9e9e;
+  fill: #9e9e9e !important;
 }
 
 .p:hover {
-  fill: url(#svg-grad);
+  fill: url(#svg-grad) !important;
 }
 
 .svg-effects {
@@ -325,4 +325,8 @@ path:hover {
 
 #elements-result {
   font-size: 2em;
+}
+
+canvas {
+  display: none;
 }

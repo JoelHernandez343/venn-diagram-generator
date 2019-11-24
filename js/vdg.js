@@ -60,6 +60,8 @@ let nameSets = [
   ['A-B-C-D-E','B-A-C-D-E','C-A-B-D-E','D-A-B-C-E','E-A-B-C-D','A^B-C-D-E', 'A^C-B-D-E', 'A^D-B-C-E', 'A^E-B-C-D', 'B^C-A-D-E', 'B^D-A-C-E', 'B^E-A-C-D', 'C^D-A-B-E', 'C^E-A-B-D', 'D^E-A-B-C', 'A^B^C-D-E', 'A^B^D-C-E', 'A^B^E-C-D', 'A^C^D-B-E', 'A^C^E-B-D', 'A^D^E-B-C', 'B^C^D-A-E', 'B^C^E-A-D', 'B^D^E-A-C', 'C^D^E-B-A', 'A^B^C^D-E', 'A^B^C^E-D', 'A^B^D^E-C', 'A^C^D^E-B', 'B^C^D^E-A', 'A^B^C^D^E', 'S']
 ];
 
+let currentDigram = '';
+
 let eval = () => {
   var x = D.getId("expression").value;
   x = prepros(x);
@@ -75,10 +77,12 @@ let eval = () => {
 
     for (var i = 2; i < 6; ++i){
       var tmp = `sets${i}`;
-      if (i === n)
+      if (i === n){
         D.getId(tmp).classList.remove('hide');
-      else
-        D.getId(tmp).classList.add('hide');
+        currentDigram = tmp;
+      }
+      else{
+        D.getId(tmp).classList.add('hide');}
     }
 
     for (var i = 0; i < e.length; ++i){
@@ -167,6 +171,55 @@ const outsideClick = e => {
     float.classList.remove('show');
 }
 
+function triggerDownload (imgURI) {
+  var evt = new MouseEvent('click', {
+    view: window,
+    bubbles: false,
+    cancelable: true
+  });
+
+  var a = document.createElement('a');
+  a.setAttribute('download', 'DIAGRAM.png');
+  a.setAttribute('href', imgURI);
+  a.setAttribute('target', '_blank');
+
+  a.dispatchEvent(evt);
+}
+
+let importImage = e => {
+
+  if (currentDigram == '') return;
+  
+  var svg = document.getElementById(currentDigram).querySelector('svg');
+  var canvas = document.getElementById('canvas');
+
+  var svgSize = svg.viewBox.baseVal;
+  canvas.width = 500;
+  canvas.height = 500;
+
+  var ctx = canvas.getContext('2d');
+  var data = (new XMLSerializer()).serializeToString(svg);
+
+  var DOMURL = window.URL || window.webkitURL || window;
+
+  var img = new Image();
+  var svgBlob = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
+  var url = DOMURL.createObjectURL(svgBlob);
+
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0, 500, 500);
+    DOMURL.revokeObjectURL(url);
+
+    var imgURI = canvas
+        .toDataURL('image/png')
+        .replace('image/png', 'image/octet-stream');
+
+    triggerDownload(imgURI);
+  };
+
+  img.src = url;
+}
+
 let init = () => {
   var sidenavs = M.Sidenav.init(D.queryAll('.sidenav'));
   var modals = M.Modal.init(D.queryAll('.modal'));
@@ -178,6 +231,7 @@ let init = () => {
     if (paths[i].id) paths[i].addEventListener('click', floatClick);
 
   D.addEventListener('click', outsideClick);
+  D.getId('imporSVG').addEventListener('click', importImage);
 }
 
 if (D.readyState === 'loading')

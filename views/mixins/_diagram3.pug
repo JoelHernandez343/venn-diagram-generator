@@ -25,12 +25,23 @@ mixin diagram3()
   - var _8 = 'M53.3,5.6C49,21.3,39.6,35,27.1,44.7C14.3,34.8,4.9,20.9,0.6,4.9c8-2.9,16.5-4.4,25.5-4.4';
   - _8 += 'C35.7,0.5,44.9,2.3,53.3,5.6z';
 
-  svg(viewBox="0 0 303 303")
-    path#f3_8(d=`${_1}`)
-    path#f3_1(d=`${_2}` transform="translate(30,31)")
-    path#f3_2(d=`${_3}` transform="translate(151,31)")
-    path#f3_3(d=`${_4}` transform="translate(75.5,165)")
-    path#f3_4(d=`${_5}` transform="translate(122,47)")
-    path#f3_5(d=`${_6}` transform="translate(151,126)")
-    path#f3_6(d=`${_7}` transform="translate(78,125)")
-    path#f3_7(d=`${_8}` transform="translate(124.5,121)")
+  svg(viewBox="0 0 303 303" xmlns="http://www.w3.org/2000/svg")
+    style
+      |  .dg {
+      |    fill: #E5E7E9;
+      |    stroke: #1d1e22;
+      |    stroke-linecap: round;
+      |    stroke-linejoin: round;
+      |    stroke-width: 0.8%;
+      |  } 
+      |  .p {
+      |    fill: #9e9e9e !important;
+      |  }
+    path#f3_8.dg(d=`${_1}`)
+    path#f3_1.dg(d=`${_2}` transform="translate(30,31)")
+    path#f3_2.dg(d=`${_3}` transform="translate(151,31)")
+    path#f3_3.dg(d=`${_4}` transform="translate(75.5,165)")
+    path#f3_4.dg(d=`${_5}` transform="translate(122,47)")
+    path#f3_5.dg(d=`${_6}` transform="translate(151,126)")
+    path#f3_6.dg(d=`${_7}` transform="translate(78,125)")
+    path#f3_7.dg(d=`${_8}` transform="translate(124.5,121)")
