@@ -327,6 +327,6 @@ button.eval i {
   font-size: 2em;
 }
 
-canvas {
+#canvas {
   display: none;
 }
