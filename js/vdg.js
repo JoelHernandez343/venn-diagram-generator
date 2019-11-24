@@ -1,27 +1,27 @@
 
 let userSets = () => {
-  var sel = document.getElementById('n-sets');
-  var option = sel.options[sel.selectedIndex].value;
-  return option === 'auto' ? 3 : Number.parseInt(option);
+  var s = D.getId('n-sets');
+  var n = s.options[s.selectedIndex].value;
+  return n === 'auto' ? 3 : Number.parseInt(n);
 }
 
 let buildElements = () => {
   var n = userSets();
 
-  var row = document.createElement('div');
+  var row = D.create('div');
   row.className = 'row';
 
   for (var i = 0; i < n; ++i){
     var letter = String.fromCharCode(65 + i);
 
-    div = document.createElement('div');
+    div = D.create('div');
     div.className = 'input-field col s12';
     
-    var input = document.createElement('input');
+    var input = D.create('input');
     input.setAttribute('id', `sett${letter}`);
     input.setAttribute('type', 'text');
 
-    var label = document.createElement('label');
+    var label = D.create('label');
     label.setAttribute('for', `sett${letter}`);
     label.innerHTML = `Conjunto ${letter}`;
 
@@ -30,7 +30,8 @@ let buildElements = () => {
     row.appendChild(div);
   }
 
-  var e = document.getElementById('elements');
+  var e = D.getId('elements');
+
   while (e.firstChild)
     e.removeChild(e.firstChild);
   
@@ -39,21 +40,31 @@ let buildElements = () => {
 }
 
 let toggleElements = () => {
-  var val = document.getElementById("useEl").checked;
-  var elements = document.getElementById("elements");
-  if (val){
-    elements.classList.add('upp');
+  var v = D.getId("useEl").checked;
+  var e = D.getId("elements");
+
+  if (v){
+    e.classList.add('upp');
     buildElements();
   }
   else
-    elements.classList.remove('upp');
+    e.classList.remove('upp');
 }
 
+let sets = [];
+
+let nameSets = [
+  ['A-B','B-A','A^B','S'],
+  ['A-B-C','B-A-C','C-B-A','A^B-C','B^C-A','A^C-B','A^B^C','S'],
+  ['A-B-C-D','B-A-C-D','C-A-B-D','D-A-B-C','A^B-C-D','A^C-B-D','A^D-B-C','B^C-A-D','B^D-A-C','C^D-A-B','A^B^C-D','A^B^D-C','A^C^D-B','B^C^D-A','A^B^C^D','S'],
+  ['A-B-C-D-E','B-A-C-D-E','C-A-B-D-E','D-A-B-C-E','E-A-B-C-D','A^B-C-D-E', 'A^C-B-D-E', 'A^D-B-C-E', 'A^E-B-C-D', 'B^C-A-D-E', 'B^D-A-C-E', 'B^E-A-C-D', 'C^D-A-B-E', 'C^E-A-B-D', 'D^E-A-B-C', 'A^B^C-D-E', 'A^B^D-C-E', 'A^B^E-C-D', 'A^C^D-B-E', 'A^C^E-B-D', 'A^D^E-B-C', 'B^C^D-A-E', 'B^C^E-A-D', 'B^D^E-A-C', 'C^D^E-B-A', 'A^B^C^D-E', 'A^B^C^E-D', 'A^B^D^E-C', 'A^C^D^E-B', 'B^C^D^E-A', 'A^B^C^D^E', 'S']
+];
+
 let eval = () => {
-  var x = document.getElementById("expression").value;
+  var x = D.getId("expression").value;
   var n = userSets();
   if (x){
-    document.getElementById('logo').classList.add('hide');
+    D.getId('logo').classList.add('hide');
 
     var p = toPost(x);
     var e = evaluate(p, n);
@@ -63,49 +74,49 @@ let eval = () => {
     for (var i = 2; i < 6; ++i){
       var tmp = `sets${i}`;
       if (i === n)
-        document.getElementById(tmp).classList.remove('hide');
+        D.getId(tmp).classList.remove('hide');
       else
-        document.getElementById(tmp).classList.add('hide');
+        D.getId(tmp).classList.add('hide');
     }
 
     for (var i = 0; i < e.length; ++i){
       var tmp = `f${n}_${i + 1}`;
 
       if (e[i])
-        document.getElementById(tmp).classList.add('p');
+        D.getId(tmp).classList.add('p');
 
       else
-        document.getElementById(tmp).classList.remove('p');
+        D.getId(tmp).classList.remove('p');
 
     }
 
-    var val = document.getElementById("useEl").checked;
-    if (val && n <= 3) {
-      let s = creatingElements(n);
-      var data = '';
-      if (n === 2){
-        data += `<p>A - B: ${s[0]}</p>`;
-        data += `<p>B - A: ${s[1]}</p>`;
-        data += `<p>A^B: ${s[2]}</p>`;
-      } else {
-        data += `<p>A - B - C: ${s[0]}</p>`;
-        data += `<p>B - A - C: ${s[1]}</p>`;
-        data += `<p>C - A - B: ${s[2]}</p>`;
-        data += `<p>A^B: ${s[3]}</p>`;
-        data += `<p>B^C: ${s[4]}</p>`;
-        data += `<p>A^C: ${s[5]}</p>`;
-        data += `<p>A^B^C: ${s[6]}</p>`;
+    var val = D.getId("useEl").checked;
+
+    if (val) {
+      sets = evalElements(n);
+
+      console.log(sets);
+
+      var data = 'Conjunto resultante: ';
+      for (var i = 0; i < e.length; ++i){
+        if (e[i])
+          data += sets[i] == '' ? '' : `${sets[i]},`;
       }
-      $('#elements-result').html(data);
+      D.getId('elements-result').innerHTML = data;
     }
   }
 }
 
 let recalculate = (x, y) => {
   var float = D.getId('float');
-  console.log(float.style.width);
-  float.style.left = `${x - 20 - 250}px`;
-  float.style.top = `${y + 20}px`;
+
+  var win = window.innerHeight + window.pageYOffset;
+  
+  var left = x - 280 < 15 ? 15 : x - 280;
+  var top = y + 30 >  win - 130 ? y - 130 : y + 30;
+
+  float.style.left = `${left}px`;
+  float.style.top = `${top}px`;
 }
 
 let floatState;
@@ -114,7 +125,7 @@ let floatClick = function(e){
   var float = D.getId('float');
 
   if (!float.classList.contains('show') || this !== floatState)
-    recalculate(e.clientX, e.clientY);
+    recalculate(e.pageX, e.pageY);
 
   if (this === floatState)
     float.classList.toggle('show');
@@ -124,9 +135,12 @@ let floatClick = function(e){
   var content = D.create('div');
   content.className = 'float-content';
 
+  var section = this.id.split(/_/)[1];
+  var n = this.id.charAt(1);
+
   var data = '<div class = "row"><div class="col s12">';
-  data += `<h1>${this.id}</h1>`;
-  data += 'Aquí van a ir los elementos';
+  data += `<h1>${nameSets[n - 2][section - 1]}</h1>`;
+  data += `${(sets[section - 1] == undefined || sets[section - 1].length == 0) ? 'Sin elementos' : sets[section - 1]}`;
   data += '</div></div>';
 
   content.innerHTML = data;
@@ -139,7 +153,6 @@ let floatClick = function(e){
   floatState = this;
 }
 
-
 const outsideClick = e => {
   var float = D.getId('float');
 
@@ -147,7 +160,7 @@ const outsideClick = e => {
     float.classList.remove('show');
 }
 
-let initialization = () => {
+let init = () => {
   var sidenavs = M.Sidenav.init(D.queryAll('.sidenav'));
   var modals = M.Modal.init(D.queryAll('.modal'));
   var selects = M.FormSelect.init(D.queryAll('select'));
@@ -161,6 +174,6 @@ let initialization = () => {
 }
 
 if (D.readyState === 'loading')
-  D.addEventListener('DOMContentLoaded', initialization);
+  D.addEventListener('DOMContentLoaded', init);
 else
-  initialization();
+  init();

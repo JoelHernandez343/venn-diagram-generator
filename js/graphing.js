@@ -34,9 +34,7 @@ let pre = x => {
   return Infinity;
 }
 
-let precedencia = (x, y) => {
-  return pre(x) - pre(y);
-}
+let precedencia = (x, y) => pre(x) - pre(y);
 
 let setUniverse = n => {
   var sets = [0, 0, 0, 0, 0, 1, 0];
@@ -102,7 +100,6 @@ let toPost = infix => {
       let v = precedencia(c, pila[ptr]);
       while (precedencia(c, pila[ptr]) <= 0 && pila[ptr] !== '(' && ptr > 0)
         post += pila[ptr--];
-      
 
       pila[++ptr] = c;
     }

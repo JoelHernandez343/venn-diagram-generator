@@ -168,13 +168,17 @@ svg path {
   stroke-width: 0.8%;
 }
 
+path:hover {
+  fill: #CACACA;
+  filter: url(#svg-shadow);
+}
+
 .p {
   fill: #9e9e9e;
 }
 
 .p:hover {
   fill: url(#svg-grad);
-  filter: url(#svg-shadow);
 }
 
 .svg-effects {

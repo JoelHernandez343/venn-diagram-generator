@@ -8,6 +8,9 @@ include mixins/_diagram5.pug
 doctype html
 html
   head
+    link(rel="shortcut icon" href="./../images/favicon.ico" type="image/x-icon")
+    link(rel="icon" href="./../images/favicon.ico" type="image/x-icon")
+
     link(href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap" rel="stylesheet")
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
     link(type="text/css" rel="stylesheet" href="./../css/materialize.min.css"  media="screen,projection")
@@ -17,7 +20,7 @@ html
     title Venn Diagram Generator
 
   body
-    .receptor.hide-on-med-and-down
+    .receptor
       #float
     +top(1)
     main
@@ -62,7 +65,7 @@ html
           .row
             #logo.col.s12
               p
-                img(src="./../images/logo.jpg" alt="Logo chido")
+                img(src="./../images/logo.png" alt="Logo chido")
             #diagram.col.s12
               +effects()
               #sets2.hide.center
@@ -73,6 +76,7 @@ html
                 +diagram4()
               #sets5.hide.center
                 +diagram5()
+            .col.s12
               .row
                 #elements-result.col.s12.center-align
 
