@@ -95,6 +95,8 @@ let eval = () => {
     if (val) {
       sets = evalElements(n);
 
+      if (sets.length == 0) return;
+
       console.log(sets);
 
       var data = 'Conjunto resultante: ';
@@ -102,6 +104,9 @@ let eval = () => {
         if (e[i])
           data += sets[i] == '' ? '' : `${sets[i]},`;
       }
+
+      if (e[e.length - 1]) data += '<br>WARN: No se define el conjunto universo.';
+
       D.getId('elements-result').innerHTML = data;
     }
   }

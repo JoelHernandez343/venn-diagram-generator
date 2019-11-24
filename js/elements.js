@@ -149,6 +149,7 @@ let buildPieces = (sets, n) => {
 let evalElements = n =>{
 
   let sets = [];
+  let count = 0;
 
   for (var i = 0; i < n; ++i){
     var letter = String.fromCharCode(65 + i);
@@ -157,8 +158,12 @@ let evalElements = n =>{
     var words = stmp.split(/\s*,+\s*/);
     words = words.filter(e => e !== '');
     
+    if (words.length === 0) count++;
+
     sets.push(words);
   }
+
+  if (count == n) return [];
 
   return buildPieces(sets, n);
 }
