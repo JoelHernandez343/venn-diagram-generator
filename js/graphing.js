@@ -198,3 +198,33 @@ let evaluate = (postfix, n) => {
 
   return r;
 }
+
+let isTerminal = c => {
+  switch (c) {
+    case 'A': case 'a':
+    case 'B': case 'b':
+    case 'C': case 'c':
+    case 'D': case 'd':
+    case 'E': case 'e':
+    case 'S': case 's':
+    case 'Ω': case 'O':
+    case '∅': case '0': case 'Ø':
+      return true;
+  }
+  return false;
+}
+
+let prepros = s => {
+  s = s.replace(/\s/g, '');
+
+  for (var i = 0; i < s.length - 1; ++i){
+    if (isTerminal(s.charAt(i)) && isTerminal(s.charAt(i + 1))){
+      var left = s.substring(0, i + 1);
+      var right = s.substring(i + 1, s.length);
+
+      s = left + '^' + right;
+    }
+  }
+
+  return s;
+}

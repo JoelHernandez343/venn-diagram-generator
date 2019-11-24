@@ -251,7 +251,7 @@ path:hover {
   width: 250px;
   height: 0px;
   top: 0px;
-  background-color: #CACCCF;
+  background-color: #9FA1A4;
   overflow: hidden;
   z-index: 2;
   border-radius: 0px;
@@ -275,6 +275,11 @@ path:hover {
 #float .float-content h1 {
   margin: 0;
   font-weight: 600;
+  font-size: 1.5em;
+}
+
+#float .float-content p {
+  margin: 0;
   font-size: 1.5em;
 }
 
@@ -316,4 +321,8 @@ path:hover {
 
 .promo h2 {
   margin-top: 15px;
+}
+
+#elements-result {
+  font-size: 2em;
 }

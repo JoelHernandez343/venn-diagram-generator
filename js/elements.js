@@ -146,6 +146,34 @@ let buildPieces = (sets, n) => {
   return r;
 }
 
+let emojis = s => {
+  switch(s){
+    case ':dog:':
+      return '🐕';
+    case ':fox:':
+      return '🦊';
+    case ':lion:':
+      return '🦁';
+    case ':horse:':
+      return '🐴';
+    case ':cow:':
+      return '🐄';
+    case ':pig:':
+      return '🐖';
+    case ':elephant:':
+      return '🐘';
+    case ':squirrel:':
+      return '🐿';
+    case ':chicken:':
+      return '🐔';
+    case ':dino:':
+      return '🦕';
+    case ':egg:':
+      return '🥚';
+  }
+  return s;
+}
+
 let evalElements = n =>{
 
   let sets = [];
@@ -157,6 +185,7 @@ let evalElements = n =>{
     
     var words = stmp.split(/\s*,+\s*/);
     words = words.filter(e => e !== '');
+    words = words.map(e => emojis(e));
     
     if (words.length === 0) count++;
 

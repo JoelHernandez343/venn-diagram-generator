@@ -62,6 +62,8 @@ let nameSets = [
 
 let eval = () => {
   var x = D.getId("expression").value;
+  x = prepros(x);
+
   var n = userSets();
   if (x){
     D.getId('logo').classList.add('hide');
@@ -144,9 +146,9 @@ let floatClick = function(e){
   var n = this.id.charAt(1);
 
   var data = '<div class = "row"><div class="col s12">';
-  data += `<h1>${nameSets[n - 2][section - 1]}</h1>`;
+  data += `<h1>${nameSets[n - 2][section - 1]}</h1><p>`;
   data += `${(sets[section - 1] == undefined || sets[section - 1].length == 0) ? 'Sin elementos' : sets[section - 1]}`;
-  data += '</div></div>';
+  data += '</p></div></div>';
 
   content.innerHTML = data;
   
